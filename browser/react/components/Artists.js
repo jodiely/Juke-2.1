@@ -2,7 +2,7 @@ import React from 'react';
 import initialState from '../initialState';
 import { Link } from 'react-router'
 
-
+ 
 export default class Artists extends React.Component {
 
     constructor(props) {
@@ -11,7 +11,6 @@ export default class Artists extends React.Component {
     }
 
     render() {
-        console.log("this is", this)
         return (
             <div>
                 <h3>Artists</h3>
