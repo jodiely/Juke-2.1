@@ -11,6 +11,7 @@ export default class Artists extends React.Component {
     }
 
     render() {
+        console.log("this is", this)
         return (
             <div>
                 <h3>Artists</h3>
@@ -20,7 +21,7 @@ export default class Artists extends React.Component {
                             return (
                                 <div className="list-group-item" key={artist.id}>
                                     {/* determine where to actually Link to later! */}
-                                    <Link to={'/artists/:artistId/'}>{artist.name}</Link>
+                                    <Link to={`/artists/${artist.id}`}  onClick={() => this.props.selectArtist(artist.id)}>{artist.name}</Link>
                                 </div>
                             )
                         })

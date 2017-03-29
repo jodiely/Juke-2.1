@@ -8,7 +8,8 @@ import Albums from '../components/Albums.js';
 import Album from '../components/Album';
 import Sidebar from '../components/Sidebar';
 import Player from '../components/Player';
-import Artists from '../components/Artists'
+import Artists from '../components/Artists';
+import Artist from '../components/Artist'
 
 import { convertAlbum, convertAlbums, skip } from '../utils';
 
@@ -46,7 +47,7 @@ export default class AppContainer extends Component {
         artists: artists
       }));
   }
-  
+
 
   onLoad(albums) {
     this.setState({
@@ -117,9 +118,10 @@ export default class AppContainer extends Component {
   selectArtist(artistId){
     axios.get(`/api/artists/${artistId}`)
       .then(res => res.data)
-      .then(artist => this.setState({
+      .then(artist => {
+        this.setState({
         selectedArtist: artist
-      }))
+      })})
   }
 
   render() {
@@ -145,11 +147,12 @@ export default class AppContainer extends Component {
 
                 //Artists (singular) component's props
                 artists: this.state.artists,
-                selectedArtist: this.state.selectedArtist
+                selectedArtist: this.state.selectedArtist,
+                selectArtist: this.selectArtist
               })
               : null
           }
-          
+
           {/*this.state.selectedAlbum.id ?
           <Album
             album={this.state.selectedAlbum}
@@ -161,7 +164,7 @@ export default class AppContainer extends Component {
             albums={this.state.albums}
             selectAlbum={this.selectAlbum}
           />*/}
-          
+
         </div>
         <Player
           currentSong={this.state.currentSong}
